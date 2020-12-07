@@ -1,4 +1,3 @@
-[build-system]
 requires = [
     # avoid self install on Python 2; ref #1996
     "setuptools >= 40.8; python_version > '3'",
@@ -6,6 +5,25 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 backend-path = ["."]
+
+[tool.black]
+skip-string-normalization = true
+
+[tool.setuptools_scm]
+
+# jaraco/skeleton#22
+[tool.jaraco.pytest.plugins.black]
+#addopts = "--black"
+
+# jaraco/skeleton#22
+[tool.jaraco.pytest.plugins.mypy]
+#addopts = "--mypy"
+
+[tool.jaraco.pytest.plugins.flake8]
+addopts = "--flake8"
+
+[tool.jaraco.pytest.plugins.cov]
+addopts = "--cov"
 
 [tool.towncrier]
     package = "setuptools"
@@ -41,9 +59,3 @@ backend-path = ["."]
         directory = "misc"
         name = "Misc"
         showcontent = true
-
-[tool.jaraco.pytest.plugins.flake8]
-addopts = "--flake8"
-
-[tool.jaraco.pytest.plugins.cov]
-addopts = "--cov"
